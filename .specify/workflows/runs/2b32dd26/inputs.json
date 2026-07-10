@@ -1,0 +1,7 @@
+{
+  "inputs": {
+    "spec": "Crear un Sistema de Gesti\u00f3n de Solicitudes internas que permita a empleados registrar solicitudes, supervisores aprobar o rechazar solicitudes, administradores configurar tipos de solicitud y todos los usuarios consultar el estado e historial. El sistema debe mantener trazabilidad, auditor\u00eda, roles y notificaciones b\u00e1sicas.",
+    "integration": "agy",
+    "scope": "full"
+  }
+}
