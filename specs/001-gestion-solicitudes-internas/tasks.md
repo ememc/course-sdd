@@ -57,6 +57,8 @@ description: "Task list template for feature implementation"
 - [ ] T015 [P] [US1] Build Solicitud Form UI with React Hook Form + Zod in `frontend/src/features/solicitudes/`
 - [ ] T016 [US1] Implement auto-save (borrador) logic in frontend using TanStack Query in `frontend/src/features/solicitudes/`
 - [ ] T017 [P] [US1] Implement `BorradorCleanupService` (Hosted Service) in `backend/src/Infrastructure/BackgroundServices/` to delete 3-day old drafts.
+- [ ] T017a [US1] Implement Cancelar Solicitud Command and endpoint for requests in "Enviada" state (FR-011)
+- [ ] T017b [US1] Add "Cancelar" button and logic in frontend `solicitudes` history view for requests in "Enviada" state
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -137,7 +139,10 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T039 [P] Refactor Admin Reassignment: Commands/UI to reassign supervisor (`UsuariosController`)
+- [ ] T039a [P] Implement Admin Reassignment (Org Level): Command/UI to change an employee's default supervisor (`UsuariosController`)
+- [ ] T039b [P] Implement Admin Reassignment (Request Level): Command/UI to mass-reassign specific requests to a new supervisor (FR-015)
+- [ ] T039c [P] Implement Supervisor Deactivation Validation: Block deactivation if active requests exist (FR-016)
+- [ ] T039d [P] Build UI flow for Supervisor Deactivation and Mass Reassignment modal in `frontend/src/features/admin/usuarios/`
 - [ ] T040 Write unit tests for Command Handlers (especially optimistic concurrency and reassignments)
 - [ ] T041 Write E2E Playwright tests following `quickstart.md` scenarios
 - [ ] T042 Performance optimization: verify `seed-500.sql` (SC-005)

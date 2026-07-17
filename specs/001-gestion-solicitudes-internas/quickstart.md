@@ -41,12 +41,10 @@ Editar `appsettings.Development.json`:
 ```json
 {
   "ConnectionStrings": {
-    "Default": "Server=localhost,1433;Database=GestionSolicitudes;User Id=sa;Password=Dev@12345!;TrustServerCertificate=True"
+    "DefaultConnection": "Server=sql-server-sdd.database.windows.net;Database=sql-server-sdd;User Id=sql-user;Password=M1q2w3e$#;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True;"
   },
-  "Jwt": {
-    "SecretKey": "dev-secret-key-minimum-32-characters!!",
-    "Issuer": "gestion-solicitudes-api",
-    "ExpiresInMinutes": 15
+  "JwtSettings": {
+    "Secret": "dev-secret-key-minimum-32-characters!!"
   }
 }
 ```
