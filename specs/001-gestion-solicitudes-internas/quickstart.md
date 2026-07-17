@@ -108,9 +108,9 @@ npm run dev
 3. Activar el tipo → verificar respuesta 200 con activo: true
 
 4. Login como empleado1@test.com
-5. POST /api/v1/solicitudes → { tipoSolicitudId: "<id>" } → Estado: Borrador
-6. PATCH /api/v1/solicitudes/{id}/borrador → { camposDinamicos: { "Motivo": "Cita médica" } }
-7. POST /api/v1/solicitudes/{id}/enviar → Estado: Enviada
+5. POST /api/v1/solicitudes → { tipoSolicitudId: "<id>" } → Estado: Borrador (capturar rowVersion)
+6. PATCH /api/v1/solicitudes/{id}/borrador (con If-Match: "<rowVersion>") → { camposDinamicos: { "Motivo": "Cita médica" } }
+7. POST /api/v1/solicitudes/{id}/enviar (con If-Match: "<rowVersion>") → Estado: Enviada
    ✓ Verificar que supervisorAsignadoId = supervisor1
 
 8. Login como supervisor1@test.com
@@ -174,8 +174,8 @@ npm run dev
 
 ```
 1. Login empleado1@test.com
-2. POST /api/v1/solicitudes → Estado: Borrador, anotar fechaCreacion
-3. PATCH /api/v1/solicitudes/{id}/borrador → guardar datos parciales → 200 OK
+2. POST /api/v1/solicitudes → Estado: Borrador, anotar fechaCreacion y rowVersion
+3. PATCH /api/v1/solicitudes/{id}/borrador (con If-Match: "<rowVersion>") → guardar datos parciales → 200 OK
 
 4. Simular expiración: UPDATE Solicitudes SET FechaCreacion = DATEADD(day, -4, GETUTCDATE())
    WHERE Id = '{id}' (directo en DB para test)

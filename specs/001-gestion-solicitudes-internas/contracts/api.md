@@ -79,7 +79,8 @@ Lista solicitudes según rol del usuario autenticado.
       "estado": "Borrador | Enviada | EnRevision | Aprobada | Rechazada | Cancelada",
       "fechaCreacion": "datetime",
       "fechaEnvio": "datetime | null",
-      "fechaResolucion": "datetime | null"
+      "fechaResolucion": "datetime | null",
+      "rowVersion": "string (base64)"
     }
   ],
   "total": 0,
@@ -130,6 +131,7 @@ Detalle de solicitud. Respeta filtro de visibilidad por rol.
   "fechaCreacion": "datetime",
   "fechaEnvio": "datetime | null",
   "fechaResolucion": "datetime | null",
+  "ultimaModificacion": "datetime",
   "rowVersion": "string (base64)"
 }
 ```
@@ -139,6 +141,8 @@ Detalle de solicitud. Respeta filtro de visibilidad por rol.
 ### `PATCH /api/v1/solicitudes/{id}/borrador`
 
 Autoguardado de campos dinámicos. Solo empleado dueño; solo estado `Borrador`.
+
+**Headers**: `If-Match: "<rowVersion>"`
 
 **Request**:
 ```json
@@ -261,7 +265,7 @@ Transiciona `Enviada → Cancelada`. Solo empleado dueño.
 
 ### `GET /api/v1/solicitudes/{id}/auditoria`
 
-Historial de eventos de auditoría de la solicitud. Solo admin o supervisor asignado.
+Historial de eventos de auditoría de la solicitud. Solo empleado dueño, supervisor asignado o admin.
 
 **Response 200**:
 ```json
